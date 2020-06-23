@@ -1,0 +1,112 @@
+C:\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Adna\Desktop\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\NerkezGabela\Downloads\Izvjestaji\Izvjestaji\IZ\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Adna\source\repos\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\NerkezGabela\Downloads\Izvjestaji (2)\Izvjestaji\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\IzvjestajiZaAgencijuSaPokusajima\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\IzvjestajiZaAgencijuRadiKask\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Demir\Desktop\IzvjestajiZaAgencijuSaKaskadama\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.deps.json
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.BLL.pdb
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.dll
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\bin\Debug\netcoreapp3.0\IZ.Model.pdb
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csprojAssemblyReference.cache
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfoInputs.cache
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.AssemblyInfo.cs
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.csproj.CopyComplete
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.dll
+C:\Users\Demir\Documents\Visual Studio 2019\Projects\IzvjestajiZaAgencijuFinal\IzvjestajiZaAgenciju\IZ.BLL\obj\Debug\netcoreapp3.0\IZ.BLL.pdb

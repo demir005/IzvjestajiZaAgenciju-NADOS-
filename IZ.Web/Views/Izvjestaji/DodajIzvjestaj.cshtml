@@ -1,0 +1,400 @@
+﻿@model IZ.Model.VM.ListaSveVM
+@{
+    ViewData["Title"] = "Dodaj izvjestaj";
+}
+
+<style>
+    #neuspjeh, #neuspjeh-XML-forme, #fajl-500 {
+        display: none;
+    }
+
+    #XML-dump, #XML-dump2 {
+        width: 100%;
+        min-height: 400px;
+    }
+
+    #podaci-prikaz {
+        display: none;
+    }
+
+    div.group-custom {
+        margin-bottom: 5px;
+    }
+
+    .obavezno-polje {
+        color: orangered
+    }
+
+    #datumi-validacija {
+        color: orangered;
+        font-size: small;
+    }
+</style>
+<form>
+
+    <div class="p-5 border rounded">
+        <h3 class="toast-header">Generisi izvjestaj </h3>      
+        <div class="form-group row">
+            <div class="col-3">
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <span id="datumi-validacija"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="datum-od" class="col-form-label">Datum od:<span class="obavezno-polje">*</span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <input id="datum-od" class="form-control" required />
+                    <script>
+                        $('#datum-od').datepicker({
+                            uiLibrary: 'bootstrap4',
+                            format: 'yyyy-mm-dd'
+                        }).on('changeDate', function (ev) {
+                            $("select").trigger("click");
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="datum-do" class="col-form-label">Datum do:<span class="obavezno-polje">*</span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <input id="datum-do" class="form-control" required />
+                    <script>
+                        $('#datum-do').datepicker({
+                            uiLibrary: 'bootstrap4',
+                            format: 'yyyy-mm-dd'
+                        }).on('changeDate', function (ev) {
+                            $("select").trigger("click");
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="datum-podnosenja" class="col-form-label">Datum podnošenja:<span class="obavezno-polje">*</span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <input id="datum-podnosenja" class="form-control" required />
+                    <script>
+                        $('#datum-podnosenja').datepicker({
+                            uiLibrary: 'bootstrap4',
+                            format: 'yyyy-mm-dd'
+                        }).on('changeDate', function (ev) {
+                            $("select").trigger("click");
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!--------------------------->
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="selekt-tip" class="col-form-label">Tip izvještaja:<span class="obavezno-polje">*</span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <select asp-items="@(new SelectList(ViewBag.SelektTip,"text1","text2"))" id="selekt-tip" class="form-control">
+                        <option value="0">Odaberite</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="selekt-izv" class="col-form-label">Izvještaj:<span class="obavezno-polje">*</span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <select id="selekt-izv" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        @*<p>Odaberi model izvještaja:</p>
+
+        <select asp-items="@(new SelectList(ViewBag.SelektSema,"text1","text2"))" class="row form-control col-3">
+            <option value="0">Odaberite</option>
+        </select>
+        <br />*@
+        @*<div class="row">
+            <input type="file" id="fileUpload" accept=".xls,.xlsx" value="Odaberite fajl" disabled class="row form-control-file col-3" />
+            <span id="check-ok" style="color:limegreen; display:none" class="col-1">&#10003;</span>
+        </div>*@
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="fileUpload" class="col-form-label">Odaberite fajl:<span class="obavezno-polje">*</span></label>
+            </div>
+            <div class="col">
+                <div class="col" style="display: -webkit-box;">
+                    <input type="file" id="fileUpload" accept=".xls,.xlsx" value="Odaberite fajl" disabled />
+                    <span id="check-ok" style="color:limegreen; display:none" class="col-1">&#10003;</span>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        @*<button id="spasi-izvjestaj" type="button" class="row btn btn-success" disabled>Spasi izvještaj</button>*@
+        <br /><br />
+        <div id="neuspjeh" class="row alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Odabrani dokument ne odgovara odabranom modelu. Pokušajte ponovo.
+        </div>
+
+        <div id="fajl-500" class="row alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Već postoji fajl sa tim imenom.
+        </div>
+
+        <div id="neuspjeh-XML-forme" class="row alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            XML generisan iz priloženog dokumenta nije validan.
+        </div>
+        <div id="podaci-prikaz">
+            <div class="row">
+                <label>Svi podaci:</label>
+                <br />
+                <textarea id="XML-dump" readonly></textarea>
+            </div>
+            <div class="row">
+                <label>Podaci:</label>
+                <br />
+                <textarea id="XML-dump2" readonly></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var items = "<option value='0'>Odaberite</option>";
+            $("#selekt-izv").html(items);
+        });
+
+        $("#selekt-tip").change(function () {
+            var tipId = $("#selekt-tip").val();
+            var url = "/Izvjestaji/VratiIzvjestajePoTipu";
+
+            $.getJSON(url, { tipId: tipId }, function (data) {
+                var item = "";
+                item = '<option value="0">Odaberite</option>'
+                $("#selekt-izv").empty();
+
+                if (data != undefined) {
+                    for (i = 0; i < data.length; i++) {
+                        item += '<option value="' + data[i].text1 + '">' + data[i].text2 + '</option>'
+                    }
+                }
+                else {
+                    item = '<option value="0">Nema izvještaja</option>'
+                }
+
+                $("#selekt-izv").html(item);
+            });
+        });
+    </script>
+
+}
+
+<script>
+    var selectedFile, rowObject, objBaza;
+
+    $(document).ready(function () {
+
+        $("#selekt-izv").click(function () {
+
+            if ($(this).val() == "0" || $(this).val() == null) {
+                //if ($("#datum-od").val().trim().length == 0) {
+                //    $("#datum-od").css("border-color", "red");
+                //}
+                //if ($("#datum-do").val().trim().length == 0) {
+                //    $("#datum-do").css("border-color", "red");
+                //}
+                //if ($("#datum-podnosenja").val().trim().length == 0) {
+                //    $("#datum-podnosenja").css("border-color", "red");
+                //}
+
+                $("input:file").prop("disabled", true);
+                return;
+            }
+            // provjeri jel unio datume
+            if ($("#datum-od").val().trim().length == 0 || $("#datum-do").val().trim().length == 0 || $("#datum-podnosenja").val().trim().length == 0) {
+                $("#datumi-validacija").html('Datumi su obavezni');
+                return;
+            } else {
+                $("#datumi-validacija").css("display", "none");
+            }
+            // provjeri jel unio datume KRAJ
+            //else {
+            //    if ($("#datum-od").val().trim().length == 0) {
+            //        $("#datum-od").css("border-color", "red");
+            //        $("input:file").prop("disabled", true);
+            //        return;
+            //    } else {
+            //        $("#datum-od").css("border-color", "#eee");
+            //    }
+            //    if ($("#datum-do").val().trim().length == 0) {
+            //        $("#datum-do").css("border-color", "red");
+            //        $("input:file").prop("disabled", true);
+            //        return;
+            //    } else {
+            //        $("#datum-do").css("border-color", "#eee");
+            //    }
+            //    if ($("#datum-podnosenja").val().trim().length == 0) {
+            //        $("#datum-podnosenja").css("border-color", "red");
+            //        $("input:file").prop("disabled", true);
+            //        return;
+            //    } else {
+            //        $("#datum-podnosenja").css("border-color", "#eee");
+            //    }
+
+            //}
+
+            $("input:file").prop("disabled", false);
+
+            objBaza = $.ajax({
+                type: "GET",
+                url: "/Izvjestaji/VratiSemu/",
+                data: "semaId=" + $(this).val(),
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (sema) {
+
+                }
+
+            });
+
+            objBaza = JSON.parse(objBaza.responseJSON);
+
+        });
+
+        document.getElementById("fileUpload").addEventListener("change", function (event) {
+            $("#loading-img").css("display", "block");
+            $("#podaci-prikaz").css("display", "none");
+            $("#fajl-500").css("display", "none");
+
+            selectedFile = event.target.files[0];
+
+            if (selectedFile) {
+                var fileReader = new FileReader();
+
+                fileReader.onload = function (event) {
+                    var data = event.target.result;
+
+                    var workbook = XLSX.read(data, {
+                        type: "binary"
+                    });
+
+                    if (compareObjects(objBaza, Glavna.VratiHeader(workbook))) {
+                        $("#check-ok").css("display", "inline");
+                        $("#neuspjeh").css("display", "none");
+                        $("#spasi-izvjestaj").prop("disabled", false);
+
+                        var sve = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { header: 1, raw: false });
+
+                        var JSONzaPoslat = Glavna.PrekiniJSONObjakatKodPraznogRedaNaDnu(sve.slice(Glavna.VratiPocetniRedHeadera(sve) + 1));
+
+                        //var jsonPodaciBezHeadera = Glavna.VratiSamoPodatke(sve.slice(Glavna.VratiPocetniRedHeadera(sve) + 1));
+                        var jsonPodaciBezHeadera = Glavna.VratiSamoPodatke(sve);
+
+                        var podaci = Glavna.Dio1PeriodSifra($("#datum-od").val(), $("#datum-do").val()) + Glavna.EXCELuXML2(sve.slice(Glavna.VratiPocetniRedHeadera(sve) + 1));
+                        var podaciBezPrveDvijeKolone = Glavna.EXCELuXML2(sve.slice(Glavna.VratiPocetniRedHeadera(sve) + 1), 2); // ,2 naznacuje da se pocinje od kolone 2, po defaultu se pocinje od kolone 0
+
+                        $("#podaci-prikaz").css("display", "block");
+                        $("#XML-dump").html(Glavna.FormatirajXML(podaci));
+                        $("#XML-dump2").html(Glavna.FormatirajXML(podaciBezPrveDvijeKolone));
+
+                        var kkk = JSON.stringify(XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { raw: false }));
+
+                        if (!!podaci) { // ako ne vrati null XML sema koju je vratio je ok
+                            $("#neuspjeh-XML-forme").css("display", "none");
+                            // ------------------- dio za upload
+
+                            if (window.FormData !== undefined) {
+
+                                var formData = new FormData();
+                                formData.append('file', $('#fileUpload')[0].files[0]);
+
+                                $.ajax({
+                                    url: "/Izvjestaji/UploadFile/",
+                                    type: 'POST',
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    success: function (result) {
+                                        if (rez.status == 200) {
+                                            $("#fajl-500").css("display", "none");
+                                        }
+                                    },
+                                    error: function (rez) {
+                                        if (rez.status == 500) {
+                                            $("#fajl-500").css("display", "block");
+                                        }
+                                    }
+                                });
+
+                            } else {
+                                alert("Preglednik nije kompatabilan za upload fajlova.");
+                            }
+
+                            // --------------------- dio za upload KRAJ
+                            var n = $("#fileUpload").val().split('\\');
+                            n = n[n.length - 1];
+
+                            spasiPodatke = $.ajax({
+                                type: "POST",
+                                url: "/Izvjestaji/SpasiPodatke/",
+                                data: "semaId=" + $("#selekt-izv").val() + "&datumOd=" + $("#datum-od").val() + "&datumDo=" + $("#datum-do").val() + "&datumPodnosenja=" + $('#datum-podnosenja').val() + "&podaci=" + podaci + "&podaciBezPrveDvijeKolone=" + podaciBezPrveDvijeKolone + "&jsonSamo=" + JSON.stringify(JSONzaPoslat) + "&jsonPoseban=" + kkk + "&jsonPodaciBezHeadera=" + jsonPodaciBezHeadera + "&nazivFajla=" + n,
+                                async: false,
+                                success: function (sema) {
+
+                                }
+                            });
+                        } else { // ako vrati null XML sema koju je generisao je losa
+                            $("#neuspjeh-XML-forme").css("display", "block");
+                        }
+
+                    } else {
+                        //var sVal = $("select").val();
+                        //var dat1 = $("#datum-od").val();
+                        //var dat2 = $("#datum-Do").val();
+
+                        //document.getElementsByTagName("form")[0].reset();
+                        $("#fileUpload").val("");
+                        //$("select").val(sVal);
+                        $("#neuspjeh").css("display", "block");
+                        $("#check-ok").css("display", "none");
+                        $("#spasi-izvjestaj").prop("disabled", true);
+                    }
+
+                    $("#loading-img").css("display", "none");
+                };
+                fileReader.readAsBinaryString(selectedFile);
+            }
+        });
+
+        function compareObjects(object1, object2) {
+            if (JSON.stringify(object1, null, 0) == JSON.stringify(object2, null, 0)) {
+                return true;
+            } else return false;
+        }
+
+    });
+
+</script>

@@ -1,0 +1,214 @@
+﻿@model IZ.Model.VM.ListaSveVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>O izvjestajima: </h1>
+<br />
+<div class="p-5 border rounded">
+
+    <div class="form-group row">
+        <div class="col-md-2">
+            <label>Izvjestaj Tip</label>
+        </div>
+        <div class="col-7">
+            <select asp-items="@(new SelectList(ViewBag.SelektTip,"text1","text2"))" id="IzvjestajTipId" name="IzvjestaLista" class="row form-control col-4">
+                <option value="0">Tip Izvjestaja</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label>Naziv Izvjestaja</label>
+        </div>
+        <div class="col-7">
+            <select asp-items="@(new SelectList(ViewBag.SelektDef ,"text1","text2"))" id="IzvjestajDefinicijaId" name="NazivLista" class="row form-control col-4">
+                <option value="0">Naziv Izvjestaja</option>
+            </select>
+        </div>
+    </div><br />
+</div>
+<br />
+<br />
+<br />
+
+
+@section Scripts{
+    <script type="text/javascript">
+        //Datatabela za IzvjestajDefinicije
+        $(document).ready(function () {
+            $('#tabela').dataTable({
+                language: {
+                    buttons: {
+                        copyTitle: 'Uspjeh',
+                        copySuccess: {
+                            _: '%d redova kopirano',
+                            1: '1 red kopiran'
+                        }
+                    },
+                    processing: "Upit se obrađuje...",
+                    search: "Pretraga&nbsp;:",
+                    lengthMenu: "_MENU_ redova",
+                    info: "Prikazano _START_  do _END_ od ukupno _TOTAL_ redova",
+                    infoEmpty: "Nema zapisa...",
+                    infoFiltered: "(filtrirano _MAX_ redova ukupno)",
+                    infoPostFix: "",
+                    loadingRecords: "Zapisi se učitavaju...",
+                    zeroRecords: "U tabeli je nula redova.",
+                    emptyTable: "Tabela je prazna!",
+                    select: {
+                        rows: {
+                            _: "",
+                            0: "",
+                            1: ""
+                        }
+                    },
+                    paginate: {
+                        first: "Prvi",
+                        previous: "<i class='fas fa-arrow-left'></i>",
+                        next: "<i class='fas fa-arrow-right'></i>",
+                        last: "Posljednji"
+                    },
+                    aria: {
+                        sortAscending: ": ",
+                        sortDescending: ": "
+                    }
+                },
+                order: [[0, 'dsc']],
+                ajax: {
+                    "type": "POST",
+                    "url": "/DemIzvjestaji/VratiDefinicijeIzvjestaj",
+                    "data": function (d) {
+                        d.tipId = $("#IzvjestajTipId").val();
+                    },
+                    "dataSrc": ""
+                },
+                columns: [
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": '<span class="fa fa-plus" style="color:teal"></span>'
+                    },
+                    {
+                        data: "IzvjestajDefinicijeId",
+                        "width": 20,
+                        "className": 'dt-body-center'
+                    },
+                    { data: "KratkiNaziv" },
+                    { data: "Naziv" },
+                    { data: "Opis" },
+                    { data: "NazivXsdSheme" }
+                ]
+            });   //kraj tabele
+
+            $('#tabela tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+
+            var table = $('#tabela').DataTable();
+
+            // Primjeni pretragu samo za odabrane kolone
+            table.columns([1, 2, 3, 4]).every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+
+            function format(d) {
+                return '<table cellpadding="5" cellspacing="0" border="0" style="width:100%; background-color:#d1e0e0">' +
+                    '<tr>' +
+                    '<td>Direktor:</td>' +
+                    '<td>' + d.Direktor + '</td>' +
+                    '<td>Ovlašteni aktuar:</td>' +
+                    '<td>' + d.OvlasteniAktuar + '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Certificirani računovođa:</td>' +
+                    '<td>' + d.CertRacunovodja + '</td>' +
+                    '<td>Sastavio, ime i prezime:</td>' +
+                    '<td>' + d.SastavioImePrezime + '</td>' +
+                    '</tr>' +
+                    '</table>';
+            }
+        });//kraj ready
+
+
+        //Ovdije pocinje kaskadno povezivanje dropdown-a
+        $(document).ready(function () {
+            var items = "<option value='0'>Odaberite</option>";
+            $("#IzvjestajDefinicijaId").html(items);
+        });
+
+        $("#IzvjestajTipId").change(function () {
+            var tipId = $("#IzvjestajTipId").val();
+            var url = "/DemIzvjestaji/VratiIzvjestajPoTipu";
+
+            $.getJSON(url, { tipId: tipId }, function (data) {
+                var item = "";
+                item = '<option value="0">Odaberite</option>'
+                $("#IzvjestajDefinicijaId").empty();
+                if (data != undefined) {
+                    for (i = 0; i < data.length; i++) {
+                        item += '<option value="' + data[i].text1 + '">' + data[i].text2 + '</option>'
+                    }
+                }
+                else {
+                    item = '<option value="0">Nema izvještaja</option>'
+                }
+                $("#IzvjestajDefinicijaId").html(item);
+            });
+        });
+
+        $("#IzvjestajDefinicijaId").change(function () {
+            var table = $('#tabela').DataTable();
+            table.ajax.reload();
+        });
+    </script>
+}
+
+
+<div class="col-12">
+    <div style="width: 100%">
+        <table id="tabela" class="table table-hover full-width">
+            <thead>
+                <tr>
+                    <th>+</th>
+                    <th>#</th>
+                    <th>Kratki naziv</th>
+                    <th>Naziv</th>
+                    <th>Opis</th>
+                    <th>XSD šema</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

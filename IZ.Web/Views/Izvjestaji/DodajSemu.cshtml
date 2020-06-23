@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "DodajSemu";
+}
+<style>
+    div {
+        margin-bottom: 5px;
+    }
+
+    textarea {
+        min-height: 250px;
+    }
+</style>
+<form method="post" asp-action="SpasiSemu" asp-controller="Izvjestaji">
+</form>
+<input type="file" id="fileUpload" accept=".xls,.xlsx" class="form-control-file" value="Odaberite fajl" />
+<br />
+<div id="kontejner-svega" style="display:none">
+    <div class="row">
+        <label class="col-3">Naziv šeme:</label>
+        <input id="naziv-seme" class="col-lg-3 col-md-4 col-sm form-control">
+    </div>
+    <div id="nekiHTML" class="row" style="font-weight:600">
+
+    </div>
+    <hr />
+    <div class="row">
+        <label class="col-3">
+            Šema:
+        </label>
+        <textarea id="json-seme" class="col form-control" readonly></textarea>
+    </div>
+    @*<div class="row">
+            <label class="col-3">Dokument: </label>
+            <textarea  id="dokument-seme" class="col form-control"></textarea>
+        </div>
+        <div class="row">
+            <label class="col-3">Obrazac 1:</label>
+            <textarea  id="obrazac-seme" class="col form-control"></textarea>
+        </div>*@
+</div>
+<hr>
+<button id="spasi-semu" type="button" class="row btn btn-danger" disabled>Spasi šemu</button>
+<br />
+<br />
+
+<div id="model-postoji" class="row alert alert-danger alert-dismissible" style="display:none">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Šema sa tim nazivom/modelom već postoji.
+</div>
+
+<script>
+    document.getElementById("fileUpload").addEventListener("change", function (event) {
+        selectedFile = event.target.files[0];
+
+        $("#loading-img").css("display", "block");
+        if (selectedFile) {
+            var fileReader = new FileReader();
+            fileReader.onload = function (event) {
+                var data = event.target.result;
+
+                var workbook = XLSX.read(data, {
+                    type: "binary"
+                });
+
+                var heder = Glavna.VratiHeader(workbook);
+
+                $("#json-seme").val(JSON.stringify(heder, null, 4));
+                //definisanje same seme preko header-a KRAJ
+
+                rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]], { raw: false });
+
+                $("#dokument-seme").val(JSON.stringify(XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[2]], { raw: false }), null, 4));
+
+                $("#obrazac-seme").val(JSON.stringify(XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[3]], { raw: false }), null, 4));
+
+                var naziv = $("#fileUpload").val();
+                naziv = naziv.split("\\");
+                naziv = naziv[naziv.length - 1];
+                naziv = naziv.split(".");
+                naziv = naziv[naziv.length - 2];
+                $("#naziv-seme").val(naziv);
+
+                $("#kontejner-svega").css("display", "block");
+                $("#spasi-semu").prop("disabled", false);
+                $("#loading-img").css("display", "none");
+            };
+            fileReader.readAsBinaryString(selectedFile);
+        }
+    });
+
+    //provjeri validnost json-a
+    $("#spasi-semu").on("click", function () {
+        var uspjeh = true;
+
+        $("textarea").each(function () {
+            try {
+                JSON.parse($(this).val());
+                $(this).removeClass("border-danger");
+                $(this).addClass("border-success");
+            }
+            catch{
+                $(this).removeClass("border-success");
+                $(this).addClass("border-danger");
+                uspjeh = false;
+            }
+        });
+
+        //ako je json validan
+        if (uspjeh) {
+            //provjeri postoji li takav model vec
+            //posalji vrijednost modela i naziv modela
+            modelPostoji = $.ajax({
+                type: "GET",
+                url: "/Izvjestaji/SemaPostoji/",
+                data: "semaNaziv=" + $("#naziv-seme").val().trim() + "&sema=" + JSON.stringify(JSON.parse($("#json-seme").val()), null, 0),
+                async: false,
+                success: function (sema) {
+
+                }
+
+            });
+            if (modelPostoji.responseJSON == "true" || modelPostoji.responseJSON == "True" || modelPostoji.responseJSON == "1") {
+                $("div#model-postoji").prop("display", true);
+                return;
+            } else {
+                $("div#model-postoji").prop("display", false);
+
+                spasiSemu = $.ajax({
+                    type: "POST",
+                    url: "/Izvjestaji/SpasiSemu/",
+                    data: "semaNaziv=" + $("#naziv-seme").val().trim() + "&sema=" + JSON.stringify(JSON.parse($("#json-seme").val()), null, 0), /*+ "&dokument=" + JSON.stringify(JSON.parse($("#dokument-seme").val()), null, 0) + "&obrazac=" + JSON.stringify(JSON.parse($("#obrazac-seme").val()), null, 0),*/
+                    async: false,
+                    success: function (uspjesnoSpaseno) {
+
+                    }
+
+                });
+            }
+        }
+        else {
+            return false;
+        }
+    });
+</script>

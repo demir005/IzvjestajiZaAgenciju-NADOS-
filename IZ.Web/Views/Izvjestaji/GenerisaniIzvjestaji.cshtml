@@ -1,0 +1,317 @@
+﻿@model IZ.Model.VM.ListaSveVM
+@{
+    ViewData["Title"] = "GenerisaniIzvjestaji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#tabela').dataTable({
+            //"scrollX": true,
+            //select: {
+            //style: 'single'
+            //},
+            //dom: 'Blfrtip',
+
+            language: {
+                buttons: {
+                    copyTitle: 'Uspjeh',
+                    copySuccess: {
+                        _: '%d redova kopirano',
+                        1: '1 red kopiran'
+                    }
+                },
+                processing: "Upit se obrađuje...",
+                search: "Pretraga&nbsp;:",
+                lengthMenu: "_MENU_ redova",
+                info: "Prikazano _START_  do _END_ od ukupno _TOTAL_ redova",
+                infoEmpty: "Nema zapisa...",
+                infoFiltered: "(filtrirano _MAX_ redova ukupno)",
+                infoPostFix: "",
+                loadingRecords: "Zapisi se učitavaju...",
+                zeroRecords: "U tabeli je nula redova.",
+                emptyTable: "Tabela je prazna!",
+                select: {
+                    rows: {
+                        _: "",
+                        0: "",
+                        1: ""
+                    }
+                },
+                paginate: {
+                    first: "Prvi",
+                    previous: "<i class='fas fa-arrow-left'></i>",
+                    next: "<i class='fas fa-arrow-right'></i>",
+                    last: "Posljednji"
+                },
+                aria: {
+                    sortAscending: ": ",
+                    sortDescending: ": "
+                }
+            },
+            order: [[0, 'dsc']],
+            ajax: {
+                "type": "POST",
+                "url": "/Izvjestaji/VratiIzvjestaje",
+                "data": function (d) {
+                    d.datumOd = $("#datum-od").val();
+                    d.datumDo = $("#datum-do").val();
+                    d.definicijaId = $("#selekt-izv").val();
+                },
+                "dataSrc": ""
+            },
+            columns: [
+                {
+                    data: "IzvjestajiGenerisaniId",
+                    "width": 20,
+                    "className": 'dt-body-center'
+                },
+                {
+                    data: "DatumKreiranja",
+                    "mRender": function (data, type, full) {
+                        return (moment(data).format("DD-MM-YYYY"));
+                    }
+                },
+                { data: "NazivXmlfajla" },
+                { data: "KratkiNazivDefinicijeI" },
+                {
+                    data: null,
+                    "orderable": false,
+                    "searchable": false,
+                    "className": 'dt-body-center',
+                    "defaultContent": '<span class="d-flex justify-content-around"><a href="#" data-toggle="tooltip" data-placement="top" title="Generiši XML" class="down"><i style="color:#F8A000;" class="material-icons md-fix">generiši</i></a><a href="#" style="display:none" style="color:red" class="arhiviraj"><i class="material-icons md-fix">clear</i></a></span>'
+                },
+                {
+                    data: null,
+                    "orderable": false,
+                    "searchable": false,
+                    "className": 'dt-body-center',
+                    "defaultContent": '<span class="d-flex justify-content-around"><a href="#" data-toggle="tooltip" data-placement="top" title="Downloaduj excel" class="downexc"><i style="color:#F8A000;" class="material-icons md-fix">download</i></a><a href="#" style="display:none" style="color:red" class="arhiviraj"><i class="material-icons md-fix">clear</i></a></span>'
+                },
+                {
+                    data: null,
+                    "orderable": false,
+                    "searchable": false,
+                    "className": 'dt-body-center',
+                    "defaultContent": '<span class="d-flex justify-content-around"><a href="#" data-toggle="tooltip" data-placement="top" title="Obriši izvještaj" class="obrisi"><i style="color:#F8A000;" class="material-icons md-fix">obriši</i></a><a href="#" style="display:none" style="color:red" class="arhiviraj"><i class="material-icons md-fix">clear</i></a></span>'
+                }
+            ]
+        });   //kraj tabele
+
+        var table = $('#tabela').DataTable();
+
+        // Primjeni pretragu samo za odabrane kolone
+        table.columns([1, 2, 3, 4]).every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+
+        $('#tabela tbody').on('click', 'a.down', function () {
+            var ppId = table.row($(this).parents('tr')).data().IzvjestajiGenerisaniId;
+            var xmlIme = table.row($(this).parents('tr')).data().NazivXmlfajla;
+            $("#downloadd").val(ppId);
+            $("#xmlIme").val(xmlIme);
+            $('#downloadd').click();
+        });
+
+        $('#tabela tbody').on('click', 'a.downexc', function () {
+            var xmlNaziv = table.row($(this).parents('tr')).data().ImportedExcel;
+            $("#excel").val(xmlNaziv);
+            $('#excel').click();
+        });
+
+        $('#tabela tbody').on('click', 'a.obrisi', function () {
+            var ppId = table.row($(this).parents('tr')).data().IzvjestajiGenerisaniId;
+            $("#obrisi").val(ppId);
+            $('#obrisi').click();
+        });
+
+        //$(".paginate_button").css("background-image", "none");
+        //$(".paginate_button").css("background-color", "white !important");
+        //$(".paginate_button").css("border", "1px solid grey");
+        //$(".paginate_button").css("border-radius", "50%");
+
+    });//kraj ready
+</script>
+
+
+<!-- Pomocna polja -->
+<form method="GET" asp-action="DownloadXML" asp-controller="Izvjestaji">
+    <input id="downloadd" type="submit" name="Id" hidden />
+    <input hidden id="xmlIme" name="xmlIme" value="" />
+</form>
+
+<form method="GET" asp-action="DownloadExcel" asp-controller="Izvjestaji">
+    <input id="excel" type="submit" name="xmlNaziv" hidden />
+</form>
+
+<form method="GET" asp-action="Obrisi" asp-controller="Izvjestaji">
+    <input id="obrisi" type="submit" name="Id" hidden />
+</form>
+
+<form>
+    <div class="p-5 border rounded">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="datum-od" class="col-form-label">Datum od:<span class="obavezno-polje"></span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <input id="datum-od" class="form-control" required />
+                    <script>
+                        $('#datum-od').datepicker({
+                            uiLibrary: 'bootstrap4',
+                            format: 'yyyy-mm-dd'
+                        }).on('changeDate', function (ev) {
+                            $("select").trigger("click");
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="datum-do" class="col-form-label">Datum do:<span class="obavezno-polje"></span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <input id="datum-do" class="form-control" required />
+                    <script>
+                        $('#datum-do').datepicker({
+                            uiLibrary: 'bootstrap4',
+                            format: 'yyyy-mm-dd'
+                        }).on('changeDate', function (ev) {
+                            $("select").trigger("click");
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="selekt-tip" class="col-form-label">Tip izvještaja:<span class="obavezno-polje"></span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <select asp-items="@(new SelectList(ViewBag.SelektTip,"text1","text2"))" id="selekt-tip" class="form-control">
+                        <option value="0">Odaberite</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label for="selekt-izv" class="col-form-label">Izvještaj:<span class="obavezno-polje"></span></label>
+            </div>
+            <div class="col">
+                <div class="col-4">
+                    <select id="selekt-izv" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-6">
+                <button id="prikazi" type="button" class="row btn btn-success" style="float: right; margin-top:5px; margin-right:1px">Prikaži izvještaje</button>
+            </div>
+        </div>
+    </div>
+</form><br />
+<div class="col-12">
+    <div style="width:100%">
+        @*<a onclick="saljiInfo()"><div class="btn btn-success btn-sm" style="position:absolute; z-index:1;"><i class="material-icons">add</i></div></a>*@
+        <table id="tabela" class="table table-hover full-width">
+            <thead>
+                <!-- atributi tabele -->
+                <tr>
+                    <th>#</th>
+                    <th>Datum kreiranja</th>
+                    <th>Naziv XML fajla</th>
+                    <th>Kratki naziv definicije</th>
+                    <th class="akcije">Generiši XML</th>
+                    <th class="akcije">Download Excel</th>
+                    <th class="akcije">Obriši</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <!-- pretraga futer -->
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    @*<th>Datum kreiranja</th>
+                        <th>Naziv XML fajla</th>
+                        <th>Kratki naziv definicije</th>*@
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var items = "<option value='0'>Odaberite</option>";
+            $("#selekt-izv").html(items);
+        });
+
+        $("#selekt-tip").change(function () {
+            var tipId = $("#selekt-tip").val();
+            var url = "/Izvjestaji/VratiIzvjestajePoTipu";
+
+            $.getJSON(url, { tipId: tipId }, function (data) {
+                var item = "";
+                item = '<option value="0">Odaberite</option>'
+                $("#selekt-izv").empty();
+                if (data != undefined) {
+                    for (i = 0; i < data.length; i++) {
+                        item += '<option value="' + data[i].text1 + '">' + data[i].text2 + '</option>'
+                    }
+                }
+                else {
+                    item = '<option value="0">Nema izvještaja</option>'
+                }
+                $("#selekt-izv").html(item);
+            });
+        });
+
+        $("#prikazi").click(function () {
+            var table = $('#tabela').DataTable();
+            table.ajax.reload();
+            // var definicijaId = $("#selekt-izv").val();
+            // var datumOd =$("#datum-od").val();
+            // var datumDo =  $("#datum-do").val();
+            //var url = "/Izvjestaji/VratiIzvjestaje";
+
+            //$.getJSON(url, {datumOd: datumOd, datumDo : datumDo, definicijaId: definicijaId}, function (data) {
+            //    var item = "";
+
+            //    if (data != undefined) {
+            //        console.log(data)
+            //        table.ajax(data);
+            //    }
+            //    else {
+            //        item = '<option value="0">Nema izvještaja</option>'
+            //    }
+            //    $("#selekt-izv").html(item);
+            //});
+        });
+    </script>
+}
